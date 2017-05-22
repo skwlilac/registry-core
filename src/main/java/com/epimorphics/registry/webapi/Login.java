@@ -118,7 +118,8 @@ public class Login {
      * Generate an absolute URL for the given registry-relative path (which should start with /).
      */
     protected String fullURLForPath(String path) {
-        return String.format("%s://%s%s%s", request.getScheme(), request.getServerName(), Registry.get().getRootPath(), path);
+        return String.format("%s://%s%s%s%s", request.getScheme(), request.getServerName(),request.getServerPort()==80 ? "" : ":"+request.getServerPort(), Registry.get().getRootPath(), path);
+//        return String.format("%s://%s%s%s", request.getScheme(), Registry.get().getRootPath(), path);
     }
 
     @Path("/pwlogin")

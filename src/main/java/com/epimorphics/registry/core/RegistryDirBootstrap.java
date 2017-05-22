@@ -29,10 +29,13 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.apache.jena.query.ARQ;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.epimorphics.util.FileUtil;
+
+import org.apache.jena.sparql.mgt.Explain ;
 
 
 /**
@@ -45,8 +48,9 @@ import com.epimorphics.util.FileUtil;
  */
 public class RegistryDirBootstrap implements ServletContextListener {
     static Logger log = LoggerFactory.getLogger(RegistryDirBootstrap.class);
-
     public static final String ROOT_DIR_PARAM = "registry-file-root";
+
+    static { ARQ.setExecutionLogging(Explain.InfoLevel.INFO) ;}
 
     String filebase;
     String fileRoot;
