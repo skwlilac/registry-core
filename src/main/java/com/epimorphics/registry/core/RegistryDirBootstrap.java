@@ -50,7 +50,7 @@ public class RegistryDirBootstrap implements ServletContextListener {
     static Logger log = LoggerFactory.getLogger(RegistryDirBootstrap.class);
     public static final String ROOT_DIR_PARAM = "registry-file-root";
 
-    static { ARQ.setExecutionLogging(Explain.InfoLevel.INFO) ;}
+    // static { ARQ.setExecutionLogging(Explain.InfoLevel.INFO) ;}
 
     String filebase;
     String fileRoot;
