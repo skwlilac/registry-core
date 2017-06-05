@@ -645,8 +645,8 @@ public class LibReg extends ComponentBase implements LibPlugin {
     private void findResources(RDFNodeWrapper base, Set<RDFNodeWrapper> links) {
         if ( links.add(base) ) {
             for (PropertyValue pv : base.listProperties()) {
-            	// Include properties in the list of things to get labels for
-            	links.add(pv.getProp());
+                // Include properties in the list of things to get labels for
+                links.add(pv.getProp());
                 for (RDFNodeWrapper link : pv.getValues()) {
                     if (link.isResource() && !links.contains(link)) {
                         findResources(link, links);
@@ -658,6 +658,7 @@ public class LibReg extends ComponentBase implements LibPlugin {
     
     static final String LABEL_QUERY =
               "SELECT * WHERE {\n"
+              + "    VALUES ?resource {$LIST$}\n"
               + "    {\n"
               + "        VALUES ?resource {$LIST$}\n"
               + "        OPTIONAL {?resource rdfs:label ?label}\n"
