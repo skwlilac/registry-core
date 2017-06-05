@@ -593,7 +593,8 @@ public class RequestProcessor extends BaseEndpoint {
         Registry registry = Registry.get();
         
         String scheme = registry.isRedirectToHttpsOnLogin() ? "https" : "http";
-        String absolutePath = String.format("%s://%s%s%s", scheme, request.getServerName(), registry.getRootPath(), path);
+//      String absolutePath = String.format("%s://%s%s%s", scheme, request.getServerName(), registry.getRootPath(), path);
+      String absolutePath = String.format("%s://%s%s%s%s", scheme, request.getServerName(),request.getServerPort()==80 ? "" : ":"+request.getServerPort(), registry.getRootPath(), path);
         URI uri;
         try {
             uri = new URI(absolutePath);
